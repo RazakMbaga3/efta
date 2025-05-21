@@ -76,6 +76,8 @@ export default function Navbar() {
                 height={45} 
                 className="w-auto h-12 transition-transform duration-300 hover:scale-105"
                 priority
+                loading="eager"
+                sizes="45px"
               />
             </Link>
 
@@ -103,14 +105,14 @@ export default function Navbar() {
         </div>
       </header>
 
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: '100vh' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-md overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-md overflow-hidden h-screen"
           >
             <div className="container mx-auto px-4 pt-32 pb-20 h-full">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 h-full">
@@ -119,9 +121,9 @@ export default function Navbar() {
                     {navLinks.map((link, index) => (
                       <motion.div
                         key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.2 }}
                         className="overflow-hidden"
                       >
                         <Link
@@ -144,7 +146,10 @@ export default function Navbar() {
                       src="/images/13.jpg"
                       alt="EFTA Visual"
                       fill
+                      loading="lazy"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                       className="object-cover"
+                      quality={75}
                     />
                   </div>
                   <div className="mt-8 text-center">
