@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next-bundle-analyzer",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "analyze": "cross-env ANALYZE=true next build",
@@ -13,6 +13,7 @@
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
     "class-variance-authority": "^0.7.1",
+    "date-fns": "^4.1.0",
     "framer-motion": "^12.10.5",
     "next": "15.2.2",
     "nodemailer": "^6.10.0",
