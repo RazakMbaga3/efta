@@ -9,41 +9,86 @@ export default function ProjectsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] mt-20 flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <Image 
+          <Image
             src="/images/electrical-contracting.png"
             alt="EFTA Projects"
             fill
             priority
-            className="object-cover brightness-[0.85]"
+            className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-efta-900/90 to-efta-900/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         </div>
-      
+
         {/* Content */}
-        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
+              <h5 className="text-efta-500 font-medium mb-3 tracking-wider">FEATURED WORK</h5>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Our Projects
+                Our <span className="text-efta-500">Innovative</span> <br />
+                <span className="text-efta-500">Projects</span> Portfolio
               </h1>
-              <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
-                Discover how we're powering Tanzania's future through innovative electrical 
-                solutions and sustainable energy projects.
-              </p>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-xl md:text-2xl text-gray-100 mb-8 max-w-2xl"
+            >
+              Discover how we're powering Tanzania's future through innovative electrical 
+              solutions and sustainable energy projects.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <a href="#project-categories" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-efta-500 hover:bg-efta-600 transition duration-300">
+                View Projects
+              </a>
+              <a href="/contact" className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-300">
+                Work With Us
+              </a>
             </motion.div>
           </div>
         </div>
+
+        {/* Floating stats */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="absolute bottom-10 right-10 bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/20 hidden lg:block"
+        >
+          <div className="grid grid-cols-3 gap-8">
+            <div className="text-center">
+              <h3 className="text-3xl font-bold text-efta-500">200+</h3>
+              <p className="text-white text-sm">Projects Completed</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-3xl font-bold text-efta-500">15+</h3>
+              <p className="text-white text-sm">Years Experience</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-3xl font-bold text-efta-500">95%</h3>
+              <p className="text-white text-sm">Repeat Clients</p>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* Project Categories */}
-      <section className="py-24 bg-white dark:bg-gray-900">
+      <section id="project-categories" className="py-24 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center mb-16">
             <h2 className="text-3xl font-bold mb-4">Our Expertise</h2>

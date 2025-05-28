@@ -1,7 +1,7 @@
 import { Inter, Merriweather } from 'next/font/google'
 import './globals.css'
-import Navbar from './components/ui/navbar.js'
-import Footer from './components/ui/footer.js'
+import ModernNavbar from './components/ui/ModernNavbar.jsx'
+import ModernFooter from './components/ui/ModernFooter.jsx'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -62,20 +62,24 @@ export const runtime = 'edge' // Use edge runtime for better performance
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${merriweather.variable}`}>
+    <html lang="en" className={`${inter.variable} ${merriweather.variable} scroll-smooth`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="format-detection" content="telephone=no" />
+        {/* PWA meta tags for better mobile experience */}
+        <meta name="application-name" content="EFTA Investments" />
+        <meta name="apple-mobile-web-app-title" content="EFTA Investments" />
+        <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="flex flex-col min-h-screen">
-        <Navbar />
+      <body className="flex flex-col min-h-screen antialiased dark:bg-gray-900 dark:text-white">
+        <ModernNavbar />
         <main className="flex-grow w-full">
           {children}
         </main>
-        <Footer />
+        <ModernFooter />
       </body>
     </html>
   )

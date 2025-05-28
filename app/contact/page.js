@@ -57,40 +57,83 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] mt-20 flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <Image 
+          <Image
             src="/images/contactus/contact-hero.jpg"
             alt="Contact EFTA Investments"
             fill
             priority
-            className="object-cover brightness-[0.85]"
+            className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-efta-900/90 to-efta-900/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         </div>
-      
+
         {/* Content */}
-        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
+              <h5 className="text-efta-500 font-medium mb-3 tracking-wider">GET IN TOUCH</h5>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Let's Power Your Project
+                Let's <span className="text-efta-500">Power</span> Your <br />
+                <span className="text-efta-500">Project</span> Together
               </h1>
-              <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
-                Connect with our team of electrical engineering experts to discuss your energy needs
-              </p>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-xl md:text-2xl text-gray-100 mb-8 max-w-2xl"
+            >
+              Connect with our team of electrical engineering experts to discuss your energy needs
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <a href="#contact-form" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-efta-500 hover:bg-efta-600 transition duration-300">
+                Send Message
+              </a>
+              <a href="tel:+255123456789" className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-300">
+                Call Us Now
+              </a>
             </motion.div>
           </div>
         </div>
+
+        {/* Floating contact info */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="absolute bottom-10 right-10 bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/20 hidden lg:flex flex-col gap-4"
+        >
+          <div className="flex items-center gap-3">
+            <HiPhone className="text-efta-500 h-5 w-5" />
+            <p className="text-white text-sm">{contactInfo.contact.phone}</p>
+          </div>
+          <div className="flex items-center gap-3">
+            <HiMail className="text-efta-500 h-5 w-5" />
+            <p className="text-white text-sm">{contactInfo.contact.email}</p>
+          </div>
+          <div className="flex items-center gap-3">
+            <HiLocationMarker className="text-efta-500 h-5 w-5" />
+            <p className="text-white text-sm">{contactInfo.headquarters.city}, Tanzania</p>
+          </div>
+        </motion.div>
       </section>
 
       {/* Contact Content */}
-      <section className="py-24 bg-white">
+      <section id="contact-form" className="py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 max-w-7xl mx-auto">
             {/* Contact Form */}

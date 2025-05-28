@@ -30,8 +30,7 @@ export default function Hero() {
           >
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Powering Progress,{' '}
-              <span className="text-efta-400">Sustaining</span>{' '}
-              the Future
+              <br></br>Sustaining the Future</span>{' '}
             </h1>
           </motion.div>
 

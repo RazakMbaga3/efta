@@ -9,41 +9,86 @@ export default function SustainabilityPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] mt-20 flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <Image 
+          <Image
             src="/images/sustainability/renewable-energy.jpg"
             alt="EFTA Sustainability"
             fill
             priority
-            className="object-cover brightness-[0.85]"
+            className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 to-green-900/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         </div>
-      
+
         {/* Content */}
-        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
+              <h5 className="text-efta-500 font-medium mb-3 tracking-wider">ECO-FRIENDLY SOLUTIONS</h5>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Powering a Sustainable Future
+                Powering a <span className="text-efta-500">Sustainable</span> <br />
+                <span className="text-efta-500">Future</span> for Tanzania
               </h1>
-              <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
-                Our commitment to sustainable electrical solutions and renewable energy 
-                technologies that protect our planet while powering progress.
-              </p>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-xl md:text-2xl text-gray-100 mb-8 max-w-2xl"
+            >
+              Our commitment to sustainable electrical solutions and renewable energy 
+              technologies that protect our planet while powering progress.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <a href="#approach" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-efta-500 hover:bg-efta-600 transition duration-300">
+                Our Approach
+              </a>
+              <a href="/contact" className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-300">
+                Get Involved
+              </a>
             </motion.div>
           </div>
         </div>
+
+        {/* Floating stats */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="absolute bottom-10 right-10 bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/20 hidden lg:block"
+        >
+          <div className="grid grid-cols-3 gap-8">
+            <div className="text-center">
+              <h3 className="text-3xl font-bold text-efta-500">30%</h3>
+              <p className="text-white text-sm">Carbon Reduction</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-3xl font-bold text-efta-500">100+</h3>
+              <p className="text-white text-sm">Green Projects</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-3xl font-bold text-efta-500">5MW+</h3>
+              <p className="text-white text-sm">Solar Installed</p>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* Our Approach */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section id="approach" className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div

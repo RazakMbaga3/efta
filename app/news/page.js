@@ -253,12 +253,17 @@ export default function NewsPage() {
   return (
     <div ref={contentRef} className="min-h-screen bg-gray-50">
       {/* Hero section with parallax effect */}
-      <section className="relative h-60 md:h-72 lg:h-80 overflow-hidden">
-        <motion.div 
-          className="absolute inset-0 w-full h-full"
-          style={{ y, opacity }}
-        >
-          <div className="absolute inset-0 bg-[url('/images/news/RC-Chalamila.png')] bg-cover bg-center z-0"></div>
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/news/RC-Chalamila.png"
+            alt="EFTA News"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
           
           {/* Decorative Elements */}
           <motion.div 
@@ -286,29 +291,74 @@ export default function NewsPage() {
               repeatType: "reverse" 
             }}
           />
-        </motion.div>
+        </div>
         
-        {/* Content overlay */}
-        <div className="absolute inset-0 flex items-center z-20">
-          <div className="container mx-auto px-4">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
+        {/* Content */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="max-w-4xl"
+              transition={{ duration: 0.8 }}
             >
-              <h1 className="text-white text-4xl md:text-5xl font-bold mb-3 font-futura">
-                News & Updates
+              <h5 className="text-efta-500 font-medium mb-3 tracking-wider">LATEST UPDATES</h5>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                Industry <span className="text-efta-500">News</span> & <br />
+                <span className="text-efta-500">Company</span> Updates
               </h1>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-xl md:text-2xl text-gray-100 mb-8 max-w-2xl"
+            >
+              Stay informed about the latest developments in electrical engineering, 
+              renewable energy, and company achievements.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <a href="#latest-news" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-efta-500 hover:bg-efta-600 transition duration-300">
+                Latest News
+              </a>
+              <a href="/blog" className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-300">
+                Visit Our Blog
+              </a>
             </motion.div>
           </div>
         </div>
+        
+        {/* Floating stats */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="absolute bottom-10 right-10 bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/20 hidden lg:block"
+        >
+          <div className="grid grid-cols-2 gap-8">
+            <div className="text-center">
+              <h3 className="text-3xl font-bold text-efta-500">50+</h3>
+              <p className="text-white text-sm">Press Releases</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-3xl font-bold text-efta-500">24/7</h3>
+              <p className="text-white text-sm">Industry Coverage</p>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       <main className="pt-10 pb-20">
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Introduction Section */}
           <motion.div
+            id="latest-news"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

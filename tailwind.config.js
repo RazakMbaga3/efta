@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class', // Enable dark mode with class
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -75,9 +76,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'sans-serif'],
+        sans: ['Outfit', 'system-ui', 'sans-serif'],
         serif: ['var(--font-merriweather)', 'serif'], 
-        futura: ['Futura', 'var(--font-inter)', 'sans-serif'], // Add Futura for branding elements
+        outfit: ['Outfit', 'system-ui', 'sans-serif'], // Use Outfit as our primary font
       },
       backgroundImage: {
         'hero-pattern': "url('/images/hero-bg.jpg')",

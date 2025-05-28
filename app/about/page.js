@@ -3,34 +3,92 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { HiUsers, HiLightBulb, HiShieldCheck, HiSparkles } from 'react-icons/hi'
+import { HiUsers, HiLightBulb, HiShieldCheck, HiSparkles, HiOfficeBuilding, HiGlobe } from 'react-icons/hi'
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-b from-efta-light/10 to-white dark:from-efta-dark dark:to-gray-900">
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/project5.jpg"
+            alt="EFTA About Us"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+        </div>
+
+        {/* Content */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Pioneering Sustainable Electrical Solutions
+              <h5 className="text-efta-500 font-medium mb-3 tracking-wider">OUR COMPANY</h5>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                Pioneering <span className="text-efta-500">Sustainable</span> <br />
+                <span className="text-efta-500">Electrical</span> Solutions
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-400">
-                EFTA Investments Company is Tanzania's leading provider of electrical contracting 
-                and renewable energy solutions, committed to powering progress while protecting our planet.
-              </p>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-xl md:text-2xl text-gray-100 mb-8 max-w-2xl"
+            >
+              EFTA Investments Company is Tanzania's leading provider of electrical contracting 
+              and renewable energy solutions, committed to powering progress while protecting our planet.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <a href="#our-story" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-efta-500 hover:bg-efta-600 transition duration-300">
+                Our Story
+              </a>
+              <a href="/contact" className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-300">
+                Contact Us
+              </a>
             </motion.div>
           </div>
         </div>
+
+        {/* Floating stats */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="absolute bottom-10 right-10 bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/20 hidden lg:block"
+        >
+          <div className="grid grid-cols-3 gap-8">
+            <div className="text-center">
+              <h3 className="text-3xl font-bold text-efta-500">15+</h3>
+              <p className="text-white text-sm">Years Experience</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-3xl font-bold text-efta-500">100+</h3>
+              <p className="text-white text-sm">Team Members</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-3xl font-bold text-efta-500">200+</h3>
+              <p className="text-white text-sm">Projects Completed</p>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* Our Story */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section id="our-story" className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
