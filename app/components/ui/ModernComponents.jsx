@@ -322,12 +322,4 @@ export function ModernCTA({
   )
 }
 
-// Export all components for easy imports
-export default {
-  EnergyMetricsBanner,
-  FeaturedProjectCard,
-  ServiceFeatureCard,
-  EnergyEfficientProductCard,
-  VideoShowcase,
-  ModernCTA
-}
+// Export happens per-component above, no need for a grouped export

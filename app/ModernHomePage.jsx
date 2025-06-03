@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { HiLightningBolt, HiSun, HiChip, HiArrowRight } from 'react-icons/hi'
+import { HiLightningBolt, HiSun, HiChip, HiArrowRight, HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FadeIn } from './components/animations/FadeIn'
+import FadeIn from './components/animations/FadeIn'
 import PageTransition from './components/animations/PageTransition'
 import ScrollReveal from './components/animations/ScrollReveal'
 import SlideIn from './components/animations/SlideIn'
@@ -33,30 +33,91 @@ export default function ModernHome() {
     })
   }, [])
 
+  // Hero slideshow state and images
+  const [currentSlide, setCurrentSlide] = useState(0)
+  
+  // Array of hero images from /public/images
+  const heroImages = [
+    '/images/6.jpg',
+    '/images/5.jpg',
+    '/images/9.jpg',
+    '/images/10.webp',
+    '/images/solar2.jpg'
+  ]
+
+  // Auto-advance slideshow
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === heroImages.length - 1 ? 0 : prev + 1))
+    }, 5000) // Change slide every 5 seconds
+    
+    return () => clearInterval(interval)
+  }, [heroImages.length])
+
+  // Functions to navigate slides
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? heroImages.length - 1 : prev - 1))
+  }
+  
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === heroImages.length - 1 ? 0 : prev + 1))
+  }
+
   return (
-    <PageTransition>
-      {/* Modern Hero Section with Video Background */}
+    <PageTransition>      {/* Modern Hero Section with Image Slideshow */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
+        {/* Hero Image Slideshow */}
         <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="/videos/hero-background.mp4" type="video/mp4" />
-            {/* Fallback image if video doesn't load */}
-            <Image
-              src="/images/6.jpg"
-              alt="EFTA Hero Background"
-              fill
-              priority
-              className="object-cover object-center"
-            />
-          </video>
+          {heroImages.map((image, index) => (
+            <div 
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <Image
+                src={image}
+                alt={`EFTA Hero Slide ${index + 1}`}
+                fill
+                priority={index === 0}
+                className="object-cover object-center"
+              />
+            </div>
+          ))}
+          
+          {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-efta-900/90 via-efta-800/70 to-transparent" />
+        </div>
+        
+        {/* Navigation arrows */}
+        <button 
+          onClick={prevSlide}
+          className="absolute left-4 z-20 p-2 rounded-full bg-black/20 text-white hover:bg-black/40 transition-colors"
+          aria-label="Previous slide"
+        >
+          <HiChevronLeft className="h-6 w-6" />
+        </button>
+        
+        <button 
+          onClick={nextSlide}
+          className="absolute right-4 z-20 p-2 rounded-full bg-black/20 text-white hover:bg-black/40 transition-colors"
+          aria-label="Next slide"
+        >
+          <HiChevronRight className="h-6 w-6" />
+        </button>
+
+        {/* Navigation dots */}
+        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full ${
+                index === currentSlide ? 'bg-white' : 'bg-white/40 hover:bg-white/60'
+              } transition-colors`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
