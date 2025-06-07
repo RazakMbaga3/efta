@@ -47,7 +47,7 @@
 
   /* Typography - Body */
   p {
-    @apply font-sans text-sm leading-normal mb-3; /* Reduced font size and spacing */
+    @apply font-sans text-sm leading-normal mb-3 text-gray-800 dark:text-gray-200; /* Improved contrast */
   }
 
   /* Links */
@@ -145,5 +145,22 @@
   
   .hero-slide:not(.active) {
     opacity: 0;
+  }
+  
+  /* Contrast utility classes */
+  .high-contrast-text {
+    @apply text-gray-800 dark:text-gray-100;
+  }
+  
+  .medium-contrast-text {
+    @apply text-gray-700 dark:text-gray-200;
+  }
+  
+  .footer-heading {
+    @apply text-gray-800 dark:text-white font-bold;
+  }
+  
+  .footer-text {
+    @apply text-gray-600 dark:text-gray-400;
   }
 }

@@ -111,10 +111,12 @@ export default function ModernNavbar() {
     setSearchActive(false)
     setSearchQuery('')
   }
-
   return (
     <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white dark:bg-gray-900 shadow-md' : 'bg-transparent'}`}>
-      <div className="container mx-auto px-4">
+      {!isScrolled && (
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent pointer-events-none"></div>
+      )}
+      <div className="container mx-auto px-4 relative">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="relative z-10">
@@ -127,17 +129,19 @@ export default function ModernNavbar() {
                 className="h-12 w-auto"
               />
             </div>
-          </Link>
-
-          {/* Desktop Navigation */}
+          </Link>          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
             {mainNavLinks.map((link, index) => (
               <div key={link.name} className="relative group">
                 <button 
                   className={`px-4 py-2 rounded-md flex items-center text-sm font-medium transition-colors ${
-                    pathname === link.href 
-                      ? 'text-efta-500 dark:text-efta-400' 
-                      : 'text-gray-700 hover:text-efta-600 dark:text-gray-300 dark:hover:text-efta-400'
+                    isScrolled 
+                      ? pathname === link.href 
+                        ? 'text-efta-500 dark:text-efta-400' 
+                        : 'text-gray-700 hover:text-efta-600 dark:text-gray-300 dark:hover:text-efta-400'
+                      : pathname === link.href 
+                        ? 'text-white font-semibold' 
+                        : 'text-white hover:text-white/80'
                   }`}
                   onClick={() => link.submenu && toggleSubmenu(index)}
                   onMouseEnter={() => link.submenu && setActiveSubmenu(index)}
@@ -172,14 +176,16 @@ export default function ModernNavbar() {
                 )}
               </div>
             ))}
-          </nav>
-
-          {/* Right side elements */}
+          </nav>          {/* Right side elements */}
           <div className="hidden lg:flex items-center space-x-4">
             {/* Search button */}
             <button 
               onClick={() => setSearchActive(!searchActive)}
-              className="p-2 rounded-full text-gray-600 hover:text-efta-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700"
+              className={`p-2 rounded-full ${
+                isScrolled 
+                  ? 'text-gray-600 hover:text-efta-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700'
+                  : 'text-white hover:text-white/80 hover:bg-white/10'
+              }`}
             >
               <HiSearch className="h-5 w-5" />
             </button>
@@ -187,7 +193,11 @@ export default function ModernNavbar() {
             {/* Dark mode toggle */}
             <button 
               onClick={toggleDarkMode}
-              className="p-2 rounded-full text-gray-600 hover:text-efta-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700"
+              className={`p-2 rounded-full ${
+                isScrolled 
+                  ? 'text-gray-600 hover:text-efta-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700'
+                  : 'text-white hover:text-white/80 hover:bg-white/10'
+              }`}
             >
               {darkMode ? (
                 <HiOutlineSun className="h-5 w-5" />
@@ -203,13 +213,15 @@ export default function ModernNavbar() {
             >
               Contact Us
             </Link>
-          </div>
-
-          {/* Mobile menu button */}
+          </div>          {/* Mobile menu button */}
           <div className="flex lg:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-efta-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-700"
+              className={`inline-flex items-center justify-center p-2 rounded-md ${
+                isScrolled
+                  ? 'text-gray-700 hover:text-efta-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-700'
+                  : 'text-white hover:text-white/80 hover:bg-white/10'
+              }`}
             >
               {isMenuOpen ? (
                 <HiX className="block h-6 w-6" />

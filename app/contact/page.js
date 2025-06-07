@@ -22,9 +22,9 @@ const contactInfo = {
     postalCode: "14111"
   },
   contact: {
-    phone: "+255 123 456 789",
+    phoneNumbers: ["+255 769 801 084", "+255 699 707 397", "+255 762 066 198"],
     email: "info@eftainvestments.co.tz",
-    emergency: "+255 789 123 456"
+    emergency: "+255 769 801 084"
   },
   hours: {
     weekdays: "Monday - Friday: 8:00 AM - 5:00 PM",
@@ -103,7 +103,7 @@ export default function ContactPage() {
               <a href="#contact-form" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-efta-500 hover:bg-efta-600 transition duration-300">
                 Send Message
               </a>
-              <a href="tel:+255123456789" className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-300">
+              <a href={`tel:${contactInfo.contact.phoneNumbers[0]}`} className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white/10 transition duration-300">
                 Call Us Now
               </a>
             </motion.div>
@@ -117,9 +117,17 @@ export default function ContactPage() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="absolute bottom-10 right-10 bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/20 hidden lg:flex flex-col gap-4"
         >
-          <div className="flex items-center gap-3">
-            <HiPhone className="text-efta-500 h-5 w-5" />
-            <p className="text-white text-sm">{contactInfo.contact.phone}</p>
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-3">
+              <HiPhone className="text-efta-500 h-5 w-5 flex-shrink-0" />
+              <p className="text-white text-sm">{contactInfo.contact.phoneNumbers[0]}</p>
+            </div>
+            <div className="flex items-center gap-3 ml-8">
+              <p className="text-white text-sm">{contactInfo.contact.phoneNumbers[1]}</p>
+            </div>
+            <div className="flex items-center gap-3 ml-8">
+              <p className="text-white text-sm">{contactInfo.contact.phoneNumbers[2]}</p>
+            </div>
           </div>
           <div className="flex items-center gap-3">
             <HiMail className="text-efta-500 h-5 w-5" />
@@ -262,7 +270,11 @@ export default function ContactPage() {
                     <HiPhone className="text-efta-600 h-6 w-6 mt-1" />
                     <div>
                       <h3 className="font-semibold">Phone</h3>
-                      <p className="text-gray-600">{contactInfo.contact.phone}</p>
+                      <div className="text-gray-600">
+                        <p>{contactInfo.contact.phoneNumbers[0]}</p>
+                        <p>{contactInfo.contact.phoneNumbers[1]}</p>
+                        <p>{contactInfo.contact.phoneNumbers[2]}</p>
+                      </div>
                     </div>
                   </div>
 

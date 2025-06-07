@@ -298,8 +298,11 @@ export function ModernCTA({
               </div>
               <div className="ml-3 text-left">
                 <p className="text-white/70 text-sm">Call Us</p>
-                <a href="tel:+255123456789" className="text-white font-medium">
-                  +255 123 456 789
+                <a href="tel:+255769801084" className="text-white font-medium">
+                    +255 769 801 084 <br />
+                    +255 699 707 397 <br />
+                    +255 762 066 198
+
                 </a>
               </div>
             </div>

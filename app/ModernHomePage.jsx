@@ -353,14 +353,12 @@ export default function ModernHome() {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Video Showcase Section */}
-      <section className="py-20 bg-gray-900 text-white">
+      </section>      {/* Video Showcase Section */}
+      <section className="py-20 bg-gray-900 dark:bg-gray-900 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold mb-4">See Our Expertise in Action</h2>
-            <p className="text-gray-400">
+            <h2 className="text-3xl font-bold mb-4 text-white dark:text-white">See Our Expertise in Action</h2>
+            <p className="text-gray-300 dark:text-gray-300">
               Watch how we transform energy systems and deliver sustainable solutions for our clients.
             </p>
           </div>
